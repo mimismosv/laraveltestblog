@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CursoController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class); 
 
-Route::get('users/ivan', function () {
+Route::get('cursos', [CursoController::class, 'index']); 
+
+Route::get('cursos/create', [CursoController::class, 'create']); 
+
+Route::get('cursos/show/{nombre}', [CursoController::class, 'show']); 
+
+/* Route::get('/', function () {
+    return view('welcome');
+}); */
+
+/* Route::get('users/ivan', function () {
     return "Ivan";
 }); 
 
 Route::get('users/{Nombre}/{Apellido?}', function ($nombre, $apellido = null) {
     return "Hola como estas: $nombre $apellido";
-});
+}); */
